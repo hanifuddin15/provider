@@ -4,6 +4,7 @@ class Urls {
 
   static const login = "login";
   static const signup = "register";
+  static const forgotPassword ="forgot_password";
   static const medical_history_review = "MedicalHistory_view_for_app";
  // static const schedule_list = "external-schedule";
   static const schedule_list = "provider-schedule_list";

@@ -182,7 +182,7 @@ class PatientScheduleListScreen extends StatelessWidget {
                                 radius: Get.width*.2*.5,
 
                                 backgroundColor: Colors.white,
-                                backgroundImage: sp.userPhoto!=null?NetworkImage("${Urls.picBaseUrl}profile_pic/${sp.userPhoto}",):NetworkImage('https://t4.ftcdn.net/jpg/03/59/58/91/360_F_359589186_JDLl8dIWoBNf1iqEkHxhUeeOulx0wOC5.jpg') as ImageProvider,
+                                backgroundImage: sp.userPhoto!=null?NetworkImage("${sp.userPhoto}",):NetworkImage('https://t4.ftcdn.net/jpg/03/59/58/91/360_F_359589186_JDLl8dIWoBNf1iqEkHxhUeeOulx0wOC5.jpg') as ImageProvider,
                              //   //child: sp.photo!=null?Image.network("${Urls.picBaseUrl}profile_pic/${sp.photo}", fit: BoxFit.cover,):SvgPicture.asset('images/avatar.svg'),
 
 

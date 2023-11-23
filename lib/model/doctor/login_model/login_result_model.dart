@@ -86,6 +86,15 @@ class DoctorProfile {
   List<PlanKeys>? _planKeys;
   JwtToken? _jwtToken;
 
+  //newly developed by hanif
+  // static final DoctorProfile _singleton = DoctorProfile._internal();
+
+  // factory DoctorProfile() {
+  //   return _singleton;
+  // }
+
+  // DoctorProfile._internal();
+
   DoctorProfile({int? id, String? name, String? firstname, String? lastname, String? type, 
   int? userCategory, int? userSubCategory, String? email, 
   String? username, String? mobile, String? address, String? dateOfBirth, 
@@ -775,3 +784,4 @@ class Original {
     return data;
   }
 }
+//

@@ -161,7 +161,7 @@ try {
   
           await setLocalData(loginResult.data!);
           DoctorProfile doctorProfile = loginResult.data!;
-          Get.put(doctorProfile);
+        Get.put(doctorProfile); //y hanif
 
           isLoading = false;
           update();

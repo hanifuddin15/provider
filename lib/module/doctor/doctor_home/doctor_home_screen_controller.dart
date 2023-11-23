@@ -13,13 +13,18 @@ import '../../../core/utils/urls.dart';
 import '../../../model/doctor/medicine/medicine_result.dart';
 
 class DoctorHomeScreenController extends GetxController{
+   static DoctorHomeScreenController get instance =>
+      Get.find<DoctorHomeScreenController>();
 
   DoctorProfile doctorProfile = DoctorProfile();
   bool isLoading = false;
 
   LocalData localData = Get.find();
 
-
+ void updateProfile(DoctorProfile updatedProfile) {
+    doctorProfile = updatedProfile;
+    update();
+  }
 
 
   fetchProfile()async{

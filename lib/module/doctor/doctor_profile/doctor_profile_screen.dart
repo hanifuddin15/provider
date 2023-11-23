@@ -12,7 +12,8 @@ class DoctorProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DoctorProfileScreenController>(
       init: DoctorProfileScreenController(),
-      builder: (controller) {
+      builder: (procontroller) {
+        
         return Scaffold(
 
           appBar: AppBar(
@@ -44,7 +45,7 @@ class DoctorProfileScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: Get.width*.4*.5+5,
                             backgroundColor: Colors.greenAccent,
-                            child: controller.doctorProfile.photo==null||controller.doctorProfile.photo!.isEmpty?CircleAvatar(
+                            child: procontroller.doctorProfile.photo==null||procontroller.doctorProfile.photo!.isEmpty?CircleAvatar(
                               radius: Get.width*.4*.5,
                                 backgroundColor: Colors.white,
                                 child: SvgPicture.asset('images/avatar.svg', fit: BoxFit.cover,)
@@ -52,7 +53,7 @@ class DoctorProfileScreen extends StatelessWidget {
                             ):CircleAvatar(
                                 radius: Get.width*.4*.5,
                                 backgroundColor: Colors.white,
-                                backgroundImage: NetworkImage("${controller.doctorProfile.photo}"),
+                                backgroundImage: NetworkImage("${procontroller.doctorProfile.photo}"),
 
                             ),
                           ),
@@ -63,7 +64,7 @@ class DoctorProfileScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("${controller.doctorProfile.name}", style: TextStyle(
+                            Text("${procontroller.doctorProfile.name}", style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
@@ -82,7 +83,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               child: SvgPicture.asset('images/telephone.svg'),
                             ),
                             SizedBox(width: 20,),
-                            Text("${controller.doctorProfile.mobile}", style: TextStyle(
+                            Text("${procontroller.doctorProfile.mobile}", style: TextStyle(
                                 fontSize: 18,
 
                                 color: Colors.black
@@ -103,7 +104,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               child: SvgPicture.asset('images/mail.svg'),
                             ),
                             SizedBox(width: 20,),
-                            Text("${controller.doctorProfile.email}", style: TextStyle(
+                            Text("${procontroller.doctorProfile.email}", style: TextStyle(
                                 fontSize: 18,
 
                                 color: Colors.black
@@ -122,7 +123,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               child: SvgPicture.asset('images/emergency.svg'),
                             ),
                             SizedBox(width: 20,),
-                            Text("${controller.doctorProfile.emergencyContactNumber??"--"} (emergency)", style: TextStyle(
+                            Text("${procontroller.doctorProfile.emergencyContactNumber??"--"} (emergency)", style: TextStyle(
                                 fontSize: 18,
 
                                 color: Colors.black
@@ -141,7 +142,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               child: SvgPicture.asset('images/address.svg'),
                             ),
                             SizedBox(width: 20,),
-                            Text("${controller.doctorProfile.address??"--"}", style: TextStyle(
+                            Text("${procontroller.doctorProfile.address??"--"}", style: TextStyle(
                                 fontSize: 18,
 
                                 color: Colors.black
@@ -160,7 +161,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               child: SvgPicture.asset('images/gender.svg'),
                             ),
                             SizedBox(width: 20,),
-                            Text("${controller.doctorProfile.gender??"--"}", style: TextStyle(
+                            Text("${procontroller.doctorProfile.gender??"--"}", style: TextStyle(
                                 fontSize: 18,
 
                                 color: Colors.black

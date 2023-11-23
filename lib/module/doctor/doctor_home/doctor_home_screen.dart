@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kambaii_provider/module/doctor/doctor_home/doctor_home_screen_controller.dart';
 import 'package:kambaii_provider/module/doctor/doctor_home/doctor_home_screen_widget.dart';
 import 'package:kambaii_provider/module/doctor/doctor_profile/doctor_profile_screen.dart';
+import 'package:kambaii_provider/module/doctor/doctor_profile_update/doctor_profile_update_controller.dart';
 import 'package:kambaii_provider/module/doctor/patient_schedule_list/patient_schedule_list_screen.dart';
 import 'package:kambaii_provider/module/doctor/pharmacy_request/request_list_screen.dart';
 import 'package:kambaii_provider/module/doctor/visit_records/visit_record_screen.dart';
@@ -20,7 +21,10 @@ class DoctorHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DoctorHomeScreenController>(
         init: DoctorHomeScreenController(),
-        builder: (controller) {
+        builder: (homecontroller) {
+           return GetBuilder<DoctorProfileUpdateController>(
+          init: DoctorProfileUpdateController(),
+          builder: (profileupdateController) {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -41,24 +45,25 @@ class DoctorHomeScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      controller.logout();
+                      homecontroller.logout();
                     },
                     icon: SvgPicture.asset('images/logout.svg'))
               ],
             ),
             body: ModalProgressHUD(
-              inAsyncCall: controller.isLoading,
+              inAsyncCall: homecontroller.isLoading,
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
+                    
                     child: Container(
                       padding: EdgeInsets.all(10),
                       child: Row(
                         children: [
                           Container(
                             padding: EdgeInsets.all(5),
-                            child: controller.doctorProfile.photo == null ||
-                                    controller.doctorProfile.photo!.isEmpty
+                            child: homecontroller.doctorProfile.photo == null ||
+                                    homecontroller.doctorProfile.photo!.isEmpty
                                 ? CircleAvatar(
                                     backgroundColor: Colors.white,
                                     radius: 50,
@@ -70,7 +75,7 @@ class DoctorHomeScreen extends StatelessWidget {
                                     backgroundColor: Colors.white,
                                     radius: 50,
                                     backgroundImage: NetworkImage(
-                                        '${controller.doctorProfile.photo}'),
+                                        '${homecontroller.doctorProfile.photo}'),
                                   ),
                           ),
                           SizedBox(
@@ -81,12 +86,12 @@ class DoctorHomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${controller.doctorProfile.name ?? "--"}",
+                                  "${homecontroller.doctorProfile.name ?? "--"}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
-                                Text("${controller.doctorProfile.type ?? "--"}")
+                                Text("${homecontroller.doctorProfile.type ?? "--"}")
                               ],
                             ),
                           )
@@ -199,6 +204,7 @@ class DoctorHomeScreen extends StatelessWidget {
                     ),
                   ),
                   SliverToBoxAdapter(
+                    
                     child: Container(
                       padding: EdgeInsets.all(10),
                       child: Row(
@@ -359,5 +365,7 @@ class DoctorHomeScreen extends StatelessWidget {
             ),
           );
         });
+  }
+  );
   }
 }

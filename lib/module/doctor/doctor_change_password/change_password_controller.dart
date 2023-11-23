@@ -43,13 +43,13 @@ class ChangePasswordController extends GetxController{
     loading = true;
     update();
 
-    Uri url = Uri.parse(Urls.baseUrl+Urls.profile_update);
+    Uri url = Uri.parse(Urls.baseUrl+Urls.forgotPassword);
 
     try{
       var response = await post(
         url,
         body:{
-          'user_id': doctorProfile.id.toString(),
+          'mobile': doctorProfile.mobile,
           'password': newPasswordController.text.trim(),
         },
         headers:{

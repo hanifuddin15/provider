@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kambaii_provider/module/doctor/doctor_home/doctor_home_screen_controller.dart';
 import 'package:kambaii_provider/module/doctor/doctor_profile_update/doctor_profile_update_controller.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -12,7 +13,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DoctorProfileUpdateController>(
       init: DoctorProfileUpdateController(),
-      builder: (controller) {
+      builder: (profileupdatecontroller) {
         return Scaffold(
 
           appBar: AppBar(
@@ -27,7 +28,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
             title: Text("Profile Update"),
           ),
           body: ModalProgressHUD(
-            inAsyncCall: controller.loading,
+            inAsyncCall: profileupdatecontroller.loading,
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -47,7 +48,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.firstnameController,
+                            controller: profileupdatecontroller.firstnameController,
                             decoration: InputDecoration(
                               hintText: 'Enter your first name',
                               filled: true,
@@ -65,7 +66,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.lastnameController,
+                            controller: profileupdatecontroller.lastnameController,
                             decoration: InputDecoration(
                                 hintText: 'Enter your last name',
                                 filled: true,
@@ -85,7 +86,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.phoneController,
+                            controller: profileupdatecontroller.phoneController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
 
@@ -106,7 +107,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.emailController,
+                            controller: profileupdatecontroller.emailController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                                 hintText: 'Enter your email',
@@ -126,7 +127,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           SizedBox(height: 10,),
                           TextField(
 
-                            controller: controller.addressController,
+                            controller: profileupdatecontroller.addressController,
 
                             decoration: InputDecoration(
                                 hintText: 'Enter your address',
@@ -144,7 +145,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.emergencycontactController,
+                            controller: profileupdatecontroller.emergencycontactController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                                 hintText: 'Your emergency contact number',
@@ -165,17 +166,17 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           SizedBox(height: 10,),
                           ListTile(
                             onTap: (){
-                              controller.changeGender(0);
+                              profileupdatecontroller.changeGender(0);
                             },
                             title: Text("Male", style: TextStyle(fontWeight: FontWeight.bold),),
-                            leading: controller.gender==0?Icon(Icons.done_all, color: Colors.green,):Icon(Icons.circle_outlined),
+                            leading: profileupdatecontroller.gender==0?Icon(Icons.done_all, color: Colors.green,):Icon(Icons.circle_outlined),
                           ),
                           ListTile(
                             onTap: (){
-                              controller.changeGender(1);
+                              profileupdatecontroller.changeGender(1);
                             },
                             title: Text("Female", style: TextStyle(fontWeight: FontWeight.bold),),
-                            leading: controller.gender==1?Icon(Icons.done_all, color: Colors.green,):Icon(Icons.circle_outlined),
+                            leading: profileupdatecontroller.gender==1?Icon(Icons.done_all, color: Colors.green,):Icon(Icons.circle_outlined),
                           ),
                           SizedBox(height: 20,),
                           //developed by Hanif
@@ -187,7 +188,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           SizedBox(height: 10,),
                           TextField(
 
-                            controller: controller.dateofBirthController,
+                            controller: profileupdatecontroller.dateofBirthController,
 
                             decoration: InputDecoration(
                                 hintText: 'Your Date of Birth',
@@ -208,7 +209,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           SizedBox(height: 10,),
                           TextField(
 
-                            controller: controller.ageController,
+                            controller: profileupdatecontroller.ageController,
 
                             decoration: InputDecoration(
                                 hintText: 'Your age',
@@ -225,10 +226,10 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold
                           ),),
                           SizedBox(height: 10,),
-                          
+
                           TextField(
 
-                            controller: controller.zoomIdController,
+                            controller: profileupdatecontroller.zoomIdController,
 
                             decoration: InputDecoration(
                                 hintText: 'Enter your zoom id',
@@ -247,7 +248,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           SizedBox(height: 10,),
                           TextField(
 
-                            controller: controller.zoomPasswordController,
+                            controller: profileupdatecontroller.zoomPasswordController,
 
                             decoration: InputDecoration(
                                 hintText: 'Enter your zoom password',
@@ -266,7 +267,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                           ),),
                           SizedBox(height: 10,),
                           TextField(
-                            controller: controller.bmdcController,
+                            controller: profileupdatecontroller.bmdcController,
 
                             decoration: InputDecoration(
                                 hintText: 'Enter your bmdc certificate number',
@@ -284,20 +285,20 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                             children: [
                               Text("Profile Image : ", style: TextStyle(fontWeight: FontWeight.bold),),
                               ElevatedButton(onPressed: (){
-                                controller.chooseImage(context, true);
+                                profileupdatecontroller.chooseImage(context, true);
                               }, child: Text("Select Image"), style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),),
                               SizedBox(width: 10,),
-                              if(controller.profileImage!=null)
+                              if(profileupdatecontroller.profileImage!=null)
                                 Container(
                                   child: CircleAvatar(
                                     backgroundColor: Colors.white,
-                                    backgroundImage: FileImage(File(controller.profileImage!.path)),
+                                    backgroundImage: FileImage(File(profileupdatecontroller.profileImage!.path)),
                                     radius: 40,
                                     child: Stack(
                                       children: [
                                         Center(
                                           child: IconButton(onPressed: (){
-                                            controller.deleteProfileImage();
+                                            profileupdatecontroller.deleteProfileImage();
 
                                           }, icon: Icon(Icons.delete_forever, color: Colors.white,)),
 
@@ -316,18 +317,18 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                             children: [
                               Text("MLN certificate : ", style: TextStyle(fontWeight: FontWeight.bold),),
                               ElevatedButton(onPressed: (){
-                                controller.chooseImage(context, false);
+                                profileupdatecontroller.chooseImage(context, false);
 
                               }, child: Text("Select Image"), style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),),
 
                               SizedBox(width: 10,),
-                              if(controller.bmdcImage!=null)
+                              if(profileupdatecontroller.bmdcImage!=null)
                                 Container(
                                   height: 70,
                                   width: 70,
 
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(image: FileImage(File(controller.bmdcImage!.path)))
+                                    image: DecorationImage(image: FileImage(File(profileupdatecontroller.bmdcImage!.path)))
                                   ),
 
                                   child: Stack(
@@ -335,7 +336,7 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                                       Center(
                                         child: IconButton(onPressed: (){
 
-                                          controller.deleteBmdcImage();
+                                          profileupdatecontroller.deleteBmdcImage();
 
                                         }, icon: Icon(Icons.delete_forever, color: Colors.white,)),
 
@@ -350,7 +351,11 @@ class DoctorProfileUpdateScreen extends StatelessWidget {
                          Container(
                            width: double.infinity,
                            child: ElevatedButton(onPressed: (){
-                             controller.updateProfile();
+                             profileupdatecontroller.updateProfile();
+ Get.find<DoctorProfileUpdateController>().updateProfile();
+                             //by hanif
+                              DoctorHomeScreenController.instance
+                                .fetchProfile();
                            }, child: Text("Update"), style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),),
                          )
                         ],

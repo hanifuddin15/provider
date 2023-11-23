@@ -25,6 +25,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../../model/doctor/lab/lab_element.dart';
 import '../../../model/doctor/local_prescription_data/local_prescription_data.dart';
 import '../../../model/doctor/medicine/medicine_result.dart';
+import '../../../model/doctor/schedule_list/schedule_list_2.dart';
 
 class PatientPrescribeController extends GetxController with GetSingleTickerProviderStateMixin{
   var arguments = Get.arguments;
@@ -32,6 +33,7 @@ class PatientPrescribeController extends GetxController with GetSingleTickerProv
   late TabController tabController;
   LocalData localData = Get.find();
   DoctorProfile doctorProfile = Get.find();
+  
   int currentTab = 0;
   PatientsInfo patientsInfo = PatientsInfo();
   VitalInfo vitalInfo = VitalInfo();

@@ -52,7 +52,8 @@ class PatientInfo extends StatelessWidget {
   child: controller.patientsInfo.userPhoto != null
       ? CachedNetworkImage(
           imageUrl:
-              "${Urls.picBaseUrl}profile_pic/${controller.patientsInfo.userPhoto}",
+              // "${Urls.picBaseUrl}profile_pic/${controller.patientsInfo.userPhoto}",
+              "${controller.patientsInfo.userPhoto}",
           fit: BoxFit.cover,
           placeholder: (context, url) => CircularProgressIndicator(),
           errorWidget: (context, url, error) => Icon(Icons.error),

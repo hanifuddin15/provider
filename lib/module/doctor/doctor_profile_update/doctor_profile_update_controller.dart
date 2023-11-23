@@ -19,6 +19,7 @@ class DoctorProfileUpdateController extends GetxController{
 
   bool loading = false;
   DoctorProfile doctorProfile = Get.find();
+   //DoctorProfile doctorProfile = DoctorProfile();
   LocalData localData = Get.find();
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
@@ -267,8 +268,16 @@ class DoctorProfileUpdateController extends GetxController{
     request.fields['zoom_pass'] = zoomPasswordController.text.trim();
     request.fields['bmdc'] = bmdcController.text.trim();
    // request.fields['bmdc_certificate'] = bmdcImage;
-    request.files.add( http.MultipartFile.fromBytes('image',  await proimgfile!.readAsBytes(), filename: "propic.jpg" ,contentType:  MediaType('image', 'jpg')));
-
+    //request.files.add( http.MultipartFile.fromBytes('image',  await proimgfile!.readAsBytes(), filename: "propic.jpg" ,contentType:  MediaType('image', 'jpg')));
+ if (proimgfile != null) {
+      // Only add the image if it's not null
+      request.files.add(http.MultipartFile.fromBytes(
+        'image',
+        await proimgfile!.readAsBytes(),
+        filename: "propic.jpg",
+        contentType: MediaType('image', 'jpg'),
+      ));
+    }
     //request.send();
 
       // var response = await http.post(
